@@ -40,6 +40,14 @@ srid = 4326
   id_fieldname = "ogc_fid"
   sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS wkb_geometry, name, ogc_fid FROM lakes WHERE wkb_geometry && !BBOX!"
 
+  [[providers.layers]]
+  name = "restaurants"
+  geometry_fieldname = "wkb_geometry"
+  geometry_type="point"
+  id_fieldname = "ogc_fid"
+  sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS wkb_geometry, name, cuisine, ogc_fid FROM restaurants WHERE wkb_geometry && !BBOX!"
+
+
 [[maps]]
 name = "bonn"
 center = [7.0982, 50.7374, 11.0] # set the center of the map so the user is auto navigated to Bonn
@@ -56,5 +64,10 @@ center = [7.0982, 50.7374, 11.0] # set the center of the map so the user is auto
 
   [[maps.layers]]
   provider_layer = "bonn.lakes"
+  min_zoom = 5
+  max_zoom = 20
+  
+  [[maps.layers]]
+  provider_layer = "bonn.restaurants"
   min_zoom = 5
   max_zoom = 20
