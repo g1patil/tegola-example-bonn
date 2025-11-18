@@ -37,7 +37,7 @@ services:
       - /bin/bash
       - -c
       - |
-        tar -xzf /data/bonn_example.tar.gz -C /data
+        tar -xzf /data/bonn_backup.tar.gz -C /data
         bash /data/init.sh
 
   tegola-mvt-postgis-provider:
